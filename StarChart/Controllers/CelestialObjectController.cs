@@ -20,12 +20,12 @@ namespace StarChart.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create ([FromBody] CelestialObject celestialObject)
+        public IActionResult Create ([FromBody]CelestialObject celestialObject)
         {
             _context.CelestialObjects.Add(celestialObject);
             _context.SaveChanges();
 
-            return CreatedAtRoute("GetById", new CelestialObject { Id = celestialObject.Id });
+            return CreatedAtRoute("GetById", new CelestialObject { Id = celestialObject.Id }, celestialObject);
         }
 
         [HttpPut("{id}")]
